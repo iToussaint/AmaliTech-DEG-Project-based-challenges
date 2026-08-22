@@ -8,3 +8,19 @@
   --color-foreground: #ffffff;
   --color-muted-foreground: #4d8ea2;
 }
+
+
+*{
+  @apply box-border
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,8 +1,9 @@
 import { FileText, Folder, ChevronRight } from "lucide-react";
 import type { NodeType } from "../types";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectDocument } from "../currentDocumentSlice";
+import type { RootState } from "../../../app/store";
 
 export default function Node({
   node,
@@ -12,6 +13,9 @@ export default function Node({
   depth?: number;
 }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const currentDocument = useSelector(
+    (state: RootState) => state.currentDocument,
+  );
   const dispatch = useDispatch();
 
   const indentation = depth * 20;
@@ -27,12 +31,14 @@ export default function Node({
   }
 
   return (
-    <div>
+    <div className="space-y-2">
       {node.type === "file" ? (
         <div
           onClick={documentClicked}
           style={{ paddingLeft: `${indentation}px` }}
-          className="flex items-center gap-2 p-2 rounded-md hover:bg-border"
+          className={`flex items-center gap-2 p-2 rounded-md hover:bg-border ${
+            currentDocument.currentDocument?.id === node.id && "bg-border"
+          }`}
         >
           <div className="w-5">
             {node.children && node.children.length > 0 && (
@@ -51,7 +57,9 @@ export default function Node({
           <div
             style={{ paddingLeft: `${indentation}px` }}
             onClick={toggleCollapse}
-            className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-border"
+            className={`flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-border ${
+              currentDocument.currentDocument?.id === node.id && "bg-border"
+            }`}
           >
             <div className="w-5">
               {node.children && node.children.length > 0 && (
@@ -68,7 +76,7 @@ export default function Node({
           </div>
 
           {!isCollapsed && (
-            <div>
+            <div className="space-y-2">
               {node.children?.map((child) => (
                 <Node key={child.id} node={child} depth={depth + 1} />
               ))}

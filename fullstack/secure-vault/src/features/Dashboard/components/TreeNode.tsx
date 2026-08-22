@@ -4,7 +4,7 @@ import Node from "./Node";
 function TreeNode() {
   console.log(data);
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       {data.map((node) => (
         <Node key={node.id} node={node} />
       ))}
