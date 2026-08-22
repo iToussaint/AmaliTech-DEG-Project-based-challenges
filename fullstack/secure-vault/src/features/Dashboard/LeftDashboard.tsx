@@ -1,6 +1,5 @@
 import { SecureVaultLogo } from "../../assets";
 import SearchInput from "./components/SearchInput";
-import { default as data } from "./../../../data.json";
 import TreeNode from "./components/TreeNode";
 
 function LeftDashboard() {
