@@ -22,18 +22,9 @@ export default function Node({
       {node.type === "file" ? (
         <div
           style={{ paddingLeft: `${indentation}px` }}
-          className="flex items-center gap-4"
+          className="flex items-center gap-2 p-2 rounded-md hover:bg-border"
         >
-          <FileText />
-          <span>{node.name}</span>
-        </div>
-      ) : (
-        <>
-          <div
-            style={{ paddingLeft: `${indentation}px` }}
-            onClick={toggleCollapse}
-            className="flex items-center gap-4 cursor-pointer"
-          >
+          <div className="w-5">
             {node.children && node.children.length > 0 && (
               <ChevronRight
                 className={`transition-transform ${
@@ -41,19 +32,35 @@ export default function Node({
                 }`}
               />
             )}
+          </div>
+          <FileText className="size-4" />
+          <span>{node.name}</span>
+        </div>
+      ) : (
+        <>
+          <div
+            style={{ paddingLeft: `${indentation}px` }}
+            onClick={toggleCollapse}
+            className="flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-border"
+          >
+            <div className="w-5">
+              {node.children && node.children.length > 0 && (
+                <ChevronRight
+                  className={`transition-transform size-4 ${
+                    !isCollapsed ? "rotate-90" : ""
+                  }`}
+                />
+              )}
+            </div>
 
-            <Folder />
+            <Folder className="size-4" />
             <span>{node.name}</span>
           </div>
 
           {!isCollapsed && (
             <div>
               {node.children?.map((child) => (
-                <Node
-                  key={child.id}
-                  node={child}
-                  depth={depth + 1}
-                />
+                <Node key={child.id} node={child} depth={depth + 1} />
               ))}
             </div>
           )}
