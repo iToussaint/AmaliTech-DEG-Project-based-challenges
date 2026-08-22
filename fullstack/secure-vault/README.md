@@ -14,24 +14,23 @@ Make sure you have the following installed:
 
 ````bash
 git clone https://github.com/iToussaint/AmaliTech-DEG-Project-based-challenges.git
-
+```
 2. Navigate to the SecureVault project:
 
 ```bash
 cd fullstack/secure-vault
-
+```
 3. Install the dependencies:
 
 ```bash
 npm install
-
+```
 4. Start the development server:
 
 ```bash
 npm run dev
-
+```
 5. Open the local URL provided by Vite in your browser.
-````
 
 ## Design File
 
@@ -46,6 +45,7 @@ a children array containing their nested files and folders.
 
 For example:
 
+```bash
 Folder
 ├── File
 ├── Folder
@@ -53,7 +53,7 @@ Folder
 │   └── Folder
 │       └── File
 └── File
-
+```
 The TreeNode component uses recursion to render this structure. When a node
 is a folder and it is expanded, the component renders its children by
 rendering another TreeNode for each child.
