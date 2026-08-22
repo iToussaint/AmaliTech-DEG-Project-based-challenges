@@ -34,7 +34,7 @@ export default function Node({
     documentClicked();
   }
 
-  function keyPressed(event: React.KeyboardEvent) {
+  function keyPressed(event: React.KeyboardEvent<HTMLDivElement>) {
     const nodes = document.querySelectorAll<HTMLElement>("[data-tree-node]");
 
     const currentIndex = Array.from(nodes).indexOf(event.currentTarget);
@@ -69,7 +69,7 @@ export default function Node({
         console.log("Arrow Left", node);
         break;
 
-      case "ArrowDown":
+      case "ArrowDown": {
         event.preventDefault();
 
         const nextNode = nodes[currentIndex + 1];
@@ -79,8 +79,9 @@ export default function Node({
         }
 
         break;
+      }
 
-      case "ArrowUp":
+      case "ArrowUp": {
         event.preventDefault();
 
         const previousNode = nodes[currentIndex - 1];
@@ -90,6 +91,7 @@ export default function Node({
         }
 
         break;
+      }
     }
   }
 
