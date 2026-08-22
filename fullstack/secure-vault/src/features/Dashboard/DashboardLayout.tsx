@@ -4,7 +4,7 @@ import SearchInput from "./components/SearchInput";
 function DashboardLayout() {
   return (
     <section className="bg-background min-h-dvh text-foreground grid grid-cols-3">
-      <div className="bg-accent p-6">
+      <div className="p-6">
         <img src={SecureVaultLogo} alt="" />
         <SearchInput></SearchInput>
       </div>
