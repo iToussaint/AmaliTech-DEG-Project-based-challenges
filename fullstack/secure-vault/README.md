@@ -34,7 +34,7 @@ The design process included a dedicated design system covering:
 
 ### Design File
 
-[Figma Design — SecureVault Dashboard](YOUR_FIGMA_LINK_HERE)
+[Figma Design — SecureVault Dashboard](https://www.figma.com/proto/CNGJ7NfJOdbbCfCfDRUz7v/SecureVault-Dashboard?node-id=10-151&t=c1Ktt3DAldEHrMFx-1)
 
 ## Tech Stack
 
