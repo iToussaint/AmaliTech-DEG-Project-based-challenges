@@ -1,8 +1,8 @@
-import type { PropertyProps } from "./types";
+import type { PropertyProps } from "../types";
 
 function Property({ property, value }: PropertyProps) {
   return (
-    <div className="bg-green-300 flex justify-between">
+    <div className="flex justify-between">
       <span>{property}</span> <span>{value}</span>
     </div>
   );

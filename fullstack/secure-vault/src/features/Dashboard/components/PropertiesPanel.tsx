@@ -1,12 +1,19 @@
 import Property from "./Property";
-import { properties } from "./constants";
 
-function PropertiesPanel() {
+function PropertiesPanel({
+  name,
+  type,
+  size,
+}: {
+  name: string;
+  type: string;
+  size: string;
+}) {
   return (
-    <div className="bg-gray-500 p-10 rounded-xl">
-      {properties.map((property) => (
-        <Property property={property.property} value={property.value} />
-      ))}
+    <div className="border border-border space-y-4 p-10 rounded-xl">
+      <Property property="Name" value={name} />
+      <Property property="Type" value={type} />
+      <Property property="Size" value={size} />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { FileText, Folder, ChevronRight } from "lucide-react";
-import type { NodeType } from "./types";
+import type { NodeType } from "../types";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { selectDocument } from "../currentDocumentSlice";
 
 export default function Node({
   node,
@@ -10,17 +12,25 @@ export default function Node({
   depth?: number;
 }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const dispatch = useDispatch();
 
   const indentation = depth * 20;
 
+  function documentClicked() {
+    dispatch(selectDocument(node));
+  }
+
   function toggleCollapse() {
     setIsCollapsed((prev) => !prev);
+
+    documentClicked();
   }
 
   return (
     <div>
       {node.type === "file" ? (
         <div
+          onClick={documentClicked}
           style={{ paddingLeft: `${indentation}px` }}
           className="flex items-center gap-2 p-2 rounded-md hover:bg-border"
         >

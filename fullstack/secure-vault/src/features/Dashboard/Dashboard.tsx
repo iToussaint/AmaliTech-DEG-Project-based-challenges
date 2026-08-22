@@ -4,7 +4,7 @@ import RightDashboard from "./RightDashboard";
 
 function Dashboard() {
   return (
-    <section className="flex bg-background text-foreground min-h-dvh">
+    <section className="flex bg-background text-foreground h-dvh">
       <LeftDashboard />
 
       <MiddleDashboard></MiddleDashboard>

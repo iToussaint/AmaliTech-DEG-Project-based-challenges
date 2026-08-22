@@ -4,7 +4,7 @@ import TreeNode from "./components/TreeNode";
 
 function LeftDashboard() {
   return (
-    <div className="p-6 space-y-10 w-100 bg-card">
+    <div className="p-6 space-y-10 w-90 bg-card overflow-y-auto">
       <img src={SecureVaultLogo} alt="" />
       <SearchInput></SearchInput>
 
