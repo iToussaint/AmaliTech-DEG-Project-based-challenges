@@ -99,6 +99,9 @@ export default function Node({
     <div className="space-y-2">
       {node.type === "file" ? (
         <div
+          data-tree-node
+          tabIndex={0}
+          onKeyDown={keyPressed}
           onClick={documentClicked}
           style={{ paddingLeft: `${indentation}px` }}
           className={`flex items-center gap-2 p-2 rounded-md hover:bg-border ${
