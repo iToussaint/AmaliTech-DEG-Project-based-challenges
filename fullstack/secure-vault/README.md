@@ -1,75 +1,63 @@
-# React + TypeScript + Vite
+# SecureVault Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, accessible file explorer interface designed for SecureVault, an enterprise cloud storage platform for organizations managing large collections of sensitive documents.
 
-Currently, two official plugins are available:
+The project focuses on making deeply nested file structures easier to navigate while providing clear context about the user's current location and selected files.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+SecureVault Dashboard is a frontend implementation of the SecureVault file management experience.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The application allows users to:
 
-## Expanding the ESLint configuration
+- Navigate deeply nested folders through a recursive file tree
+- Expand and collapse folders without reloading the page
+- View the contents of the currently selected folder
+- Understand their current location through breadcrumb navigation
+- Select files and inspect their metadata
+- Navigate the explorer using keyboard controls
+- Search for files and folders
+- Quickly understand the context of files within the vault
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The interface was designed with a focus on clarity, accessibility, information hierarchy, and efficient navigation of large file structures.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Design
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The interface was designed before implementation using Figma.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The design process included a dedicated design system covering:
 
-```
+- Typography
+- Color palette
+- Spacing grid
+- Component states
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Design File
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+[Figma Design — SecureVault Dashboard](YOUR_FIGMA_LINK_HERE)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
 
-```
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Git / GitHub
+
+No component library such as Bootstrap, Material UI, Chakra UI, or Ant Design is used. The interface is built from reusable components based on the project's design system.
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone YOUR_REPOSITORY_URL
