@@ -16,9 +16,9 @@ export default function Node({
   const currentDocument = useSelector(
     (state: RootState) => state.currentDocument,
   );
-  const searchedNodes = useSelector((state: RootState) => state.searchedNodes)
+  const searchedNodes = useSelector((state: RootState) => state.searchedNodes);
 
-  const searcheds = new Set(searchedNodes)
+  const searcheds = new Set(searchedNodes);
 
   const dispatch = useDispatch();
 
@@ -34,8 +34,65 @@ export default function Node({
     documentClicked();
   }
 
+  function keyPressed(event: React.KeyboardEvent) {
+    const nodes = document.querySelectorAll<HTMLElement>("[data-tree-node]");
 
-  console.log(searcheds)
+    const currentIndex = Array.from(nodes).indexOf(event.currentTarget);
+
+    switch (event.key) {
+      case "Enter":
+        event.preventDefault();
+
+        dispatch(selectDocument(node));
+
+        console.log("Enter pressed", node);
+        break;
+
+      case "ArrowRight":
+        event.preventDefault();
+
+        if (node.type === "folder") {
+          dispatch(selectDocument(node));
+          setIsCollapsed(false);
+        }
+
+        console.log("Arrow Right", node);
+        break;
+
+      case "ArrowLeft":
+        event.preventDefault();
+
+        if (node.type === "folder") {
+          setIsCollapsed(true);
+        }
+
+        console.log("Arrow Left", node);
+        break;
+
+      case "ArrowDown":
+        event.preventDefault();
+
+        const nextNode = nodes[currentIndex + 1];
+
+        if (nextNode) {
+          nextNode.focus();
+        }
+
+        break;
+
+      case "ArrowUp":
+        event.preventDefault();
+
+        const previousNode = nodes[currentIndex - 1];
+
+        if (previousNode) {
+          previousNode.focus();
+        }
+
+        break;
+    }
+  }
+
   return (
     <div className="space-y-2">
       {node.type === "file" ? (
@@ -61,8 +118,11 @@ export default function Node({
       ) : (
         <>
           <div
+            data-tree-node
+            tabIndex={0}
             style={{ paddingLeft: `${indentation}px` }}
             onClick={toggleCollapse}
+            onKeyDown={keyPressed}
             className={`flex items-center gap-2 cursor-pointer p-2 rounded-md hover:bg-border ${
               currentDocument.currentDocument?.id === node.id && "bg-border"
             }`}
@@ -81,7 +141,7 @@ export default function Node({
             <span>{node.name}</span>
           </div>
 
-          {!isCollapsed || searcheds.has(node.id) && (
+          {(!isCollapsed || searcheds.has(node.id)) && (
             <div className="space-y-2">
               {node.children?.map((child) => (
                 <Node key={child.id} node={child} depth={depth + 1} />
