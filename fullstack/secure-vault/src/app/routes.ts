@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router";
-import HomePage from "../features/Home";
+import Dashboard from "../features/Dashboard";
 
 const router = createBrowserRouter([
   {
     path: "",
-    Component: HomePage,
+    Component: Dashboard,
   },
 ]);
 
