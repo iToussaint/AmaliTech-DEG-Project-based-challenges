@@ -1,12 +1,12 @@
-import type { TreeNodeType } from "./types";
+import { default as data } from "./../../../../data.json";
+import Node from "./Node";
 
-function TreeNode({ node }: { node: TreeNodeType }) {
+function TreeNode() {
+  console.log(data);
   return (
-    <div>
-      <div>{node.name}</div>
-
-      {node.children?.map((child) => (
-        <TreeNode key={child.id} node={child} />
+    <div className="space-y-4">
+      {data.map((node) => (
+        <Node key={node.id} node={node} />
       ))}
     </div>
   );

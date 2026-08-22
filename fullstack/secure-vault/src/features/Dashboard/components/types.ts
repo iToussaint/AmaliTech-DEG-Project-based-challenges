@@ -3,10 +3,10 @@ export interface PropertyProps {
   value: string | number;
 }
 
-export interface TreeNodeType {
+export interface NodeType {
   id: string;
   name: string;
-  type: string;
-  children?: TreeNodeType[];
+  type: string
+  children?: NodeType[];
   size?: string;
 }
