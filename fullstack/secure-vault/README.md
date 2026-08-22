@@ -34,7 +34,7 @@ The design process included a dedicated design system covering:
 
 ### Design File
 
-[Figma Design — SecureVault Dashboard](https://www.figma.com/proto/CNGJ7NfJOdbbCfCfDRUz7v/SecureVault-Dashboard?node-id=10-151&t=c1Ktt3DAldEHrMFx-1)
+[Figma Design — SecureVault Dashboard](https://www.figma.com/design/CNGJ7NfJOdbbCfCfDRUz7v/SecureVault-Dashboard?m=auto&t=27mUgeQxzdZK5C9e-1)
 
 ## Tech Stack
 
@@ -61,3 +61,4 @@ Clone the repository:
 
 ```bash
 git clone YOUR_REPOSITORY_URL
+```
