@@ -2,6 +2,7 @@ import Statistics from "./components/Statistic";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../app/store";
 import Document from "./components/Document";
+import BreadCrumb from "./components/BreadCrumb";
 
 function MiddleDashboard() {
   const selectedDocument = useSelector(
@@ -22,7 +23,7 @@ function MiddleDashboard() {
 
   return (
     <div className=" flex-1 space-y-10 px-4 py-10">
-      <p>breadcrum</p>
+      <BreadCrumb />
 
       <h1 className="uppercase font-semibold text-2xl h-10">
         {selectedDocument.currentDocument?.type === "folder" &&
