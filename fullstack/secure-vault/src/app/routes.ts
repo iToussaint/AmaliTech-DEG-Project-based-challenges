@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router";
 import Dashboard from "../features/Dashboard/Dashboard";
-import DashboardLayout from "../features/Dashboard/DashboardLayout";
+import ErrorPage from "../ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "",
-    Component: DashboardLayout,
-    children: [{ index: true, Component: Dashboard }],
+    Component: Dashboard,
+    ErrorBoundary: ErrorPage,
   },
 ]);
 

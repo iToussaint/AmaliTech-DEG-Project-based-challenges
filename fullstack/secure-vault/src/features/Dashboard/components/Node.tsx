@@ -2,44 +2,63 @@ import { FileText, Folder, ChevronRight } from "lucide-react";
 import type { NodeType } from "./types";
 import { useState } from "react";
 
-function Node({ node }: { node: NodeType }) {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
+export default function Node({
+  node,
+  depth = 0,
+}: {
+  node: NodeType;
+  depth?: number;
+}) {
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
-  console.log("printeddd");
+  const indentation = depth * 20;
+
   function toggleCollapse() {
-    setIsCollapsed((prev: boolean) => !prev);
+    setIsCollapsed((prev) => !prev);
   }
 
-  if (node.type === "file")
-    return (
-      <div className="flex gap-4">
-        <FileText className=" " /> <span className="">{node.name}</span>
-      </div>
-    );
-  if (node.type === "folder")
-    return (
-      <div>
-        <div onClick={toggleCollapse} className="flex gap-4">
-          {node.children && (
-            <ChevronRight
-              className={
-                !isCollapsed
-                  ? "ease-in-out"
-                  : "rotate-90 duration-300 ease-in-out"
-              }
-            />
-          )}
-          <Folder /> <span>{node.name}</span>
+  return (
+    <div>
+      {node.type === "file" ? (
+        <div
+          style={{ paddingLeft: `${indentation}px` }}
+          className="flex items-center gap-4"
+        >
+          <FileText />
+          <span>{node.name}</span>
         </div>
-        {!isCollapsed && (
-          <div className="space-y-4">
-            {node.children?.map((nod) => (
-              <Node node={nod} />
-            ))}
-          </div>
-        )}
-      </div>
-    );
-}
+      ) : (
+        <>
+          <div
+            style={{ paddingLeft: `${indentation}px` }}
+            onClick={toggleCollapse}
+            className="flex items-center gap-4 cursor-pointer"
+          >
+            {node.children && node.children.length > 0 && (
+              <ChevronRight
+                className={`transition-transform ${
+                  !isCollapsed ? "rotate-90" : ""
+                }`}
+              />
+            )}
 
-export default Node;
+            <Folder />
+            <span>{node.name}</span>
+          </div>
+
+          {!isCollapsed && (
+            <div>
+              {node.children?.map((child) => (
+                <Node
+                  key={child.id}
+                  node={child}
+                  depth={depth + 1}
+                />
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}

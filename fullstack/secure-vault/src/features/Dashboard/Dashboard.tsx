@@ -4,16 +4,12 @@ import RightDashboard from "./RightDashboard";
 
 function Dashboard() {
   return (
-    <section className="grid grid-cols-3">
-      <div>
-        <LeftDashboard />
-      </div>
-      <div>
-        <MiddleDashboard></MiddleDashboard>
-      </div>
-      <div>
-        <RightDashboard></RightDashboard>
-      </div>
+    <section className="flex bg-violet-400 min-h-dvh">
+      <LeftDashboard />
+
+      <MiddleDashboard></MiddleDashboard>
+
+      <RightDashboard></RightDashboard>
     </section>
   );
 }

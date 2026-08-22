@@ -1,15 +1,12 @@
+import Property from "./Property";
+import { properties } from "./constants";
+
 function PropertiesPanel() {
   return (
-    <div>
-      <div>
-        <span>Name: </span> <span>File Name</span>
-      </div>
-      <div>
-        <span>Type: </span> <span>File Type</span>
-      </div>
-      <div>
-        <span>Size: </span> <span>File Size</span>
-      </div>
+    <div className="bg-gray-500 p-10 rounded-xl">
+      {properties.map((property) => (
+        <Property property={property.property} value={property.value} />
+      ))}
     </div>
   );
 }
