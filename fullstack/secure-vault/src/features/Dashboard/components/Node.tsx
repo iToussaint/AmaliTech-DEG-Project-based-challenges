@@ -16,6 +16,10 @@ export default function Node({
   const currentDocument = useSelector(
     (state: RootState) => state.currentDocument,
   );
+  const searchedNodes = useSelector((state: RootState) => state.searchedNodes)
+
+  const searcheds = new Set(searchedNodes)
+
   const dispatch = useDispatch();
 
   const indentation = depth * 20;
@@ -30,6 +34,8 @@ export default function Node({
     documentClicked();
   }
 
+
+  console.log(searcheds)
   return (
     <div className="space-y-2">
       {node.type === "file" ? (
@@ -41,13 +47,13 @@ export default function Node({
           }`}
         >
           <div className="w-5">
-            {node.children && node.children.length > 0 && (
+            {/* {node.children && node.children.length > 0 && (
               <ChevronRight
                 className={`transition-transform ${
-                  !isCollapsed ? "rotate-90" : ""
+                  !isCollapsed || searcheds.has(node.id) ? "rotate-90" : ""
                 }`}
               />
-            )}
+            )} */}
           </div>
           <FileText className="size-4" />
           <span>{node.name}</span>
@@ -65,7 +71,7 @@ export default function Node({
               {node.children && node.children.length > 0 && (
                 <ChevronRight
                   className={`transition-transform size-4 ${
-                    !isCollapsed ? "rotate-90" : ""
+                    !isCollapsed || searcheds.has(node.id) ? "rotate-90" : ""
                   }`}
                 />
               )}
@@ -75,7 +81,7 @@ export default function Node({
             <span>{node.name}</span>
           </div>
 
-          {!isCollapsed && (
+          {!isCollapsed || searcheds.has(node.id) && (
             <div className="space-y-2">
               {node.children?.map((child) => (
                 <Node key={child.id} node={child} depth={depth + 1} />

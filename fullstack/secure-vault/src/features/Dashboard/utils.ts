@@ -26,3 +26,44 @@ export function findPath(
 
   return null;
 }
+
+export function searchTree(nodes: NodeType[], query: string): NodeType[] {
+  const results: NodeType[] = [];
+
+  for (const node of nodes) {
+    if (node.name.toLowerCase().includes(query.toLowerCase())) {
+      results.push(node);
+    }
+
+    if (node.children) {
+      results.push(...searchTree(node.children, query));
+    }
+  }
+
+  return results;
+}
+
+export function getVisibleNodes(
+  nodes: NodeType[],
+  expandedNodeIds: string[],
+): NodeType[] {
+  const visibleNodes: NodeType[] = [];
+
+  function traverse(nodes: NodeType[]) {
+    for (const node of nodes) {
+      visibleNodes.push(node);
+
+      if (
+        node.type === "folder" &&
+        node.children &&
+        expandedNodeIds.includes(node.id)
+      ) {
+        traverse(node.children);
+      }
+    }
+  }
+
+  traverse(nodes);
+
+  return visibleNodes;
+}

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import currentDocumentReducer from "./../features/Dashboard/currentDocumentSlice";
+import searchNodesReducer from "./../features/Dashboard/searchedNodesSlice";
 
 const store = configureStore({
   reducer: {
     currentDocument: currentDocumentReducer,
+    searchedNodes: searchNodesReducer,
   },
 });
 
